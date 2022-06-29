@@ -1,0 +1,4 @@
+[flake8]
+per-file-ignores =
+# E501 line too long
+    **/ok_tools/settings.py:E501
