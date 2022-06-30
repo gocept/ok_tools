@@ -33,7 +33,8 @@ if 'OKTOOLS_CONFIG_FILE' in os.environ:
         os.environ.get('OKTOOLS_CONFIG_FILE'), encoding='utf-8'
     ))
 else:
-    raise ValueError('No config file found for ok-tools.')
+    logger.warning("No config file found for ok-tools."
+                   " Switching to fallbacks.")
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config.get('django', 'secret_key', fallback=None)
