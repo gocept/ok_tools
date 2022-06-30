@@ -12,8 +12,12 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import configparser
+import logging
 import os
 
+
+# Logger for settings.py
+logger = logging.getLogger(__name__)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -29,7 +33,7 @@ if 'OKTOOLS_CONFIG_FILE' in os.environ:
         os.environ.get('OKTOOLS_CONFIG_FILE'), encoding='utf-8'
     ))
 else:
-    raise ValueError('No configuration file found for ok_tools')
+    raise ValueError('No config file found for ok-tools.')
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = config.get('django', 'secret_key', fallback=None)
@@ -39,7 +43,7 @@ SECRET_KEY = config.get('django', 'secret_key', fallback=None)
 DEBUG = config.getboolean('django', 'debug', fallback=False)
 
 hosts = config.get('django', 'allowed_hosts', fallback=None)
-ALLOWED_HOSTS = hosts.split() if hosts else []
+ALLOWED_HOSTS = hosts.split() if hosts else ['localhost']
 
 # Loglevel
 DJANGO_LOG_LEVEL = os.getenv('DJANGO_LOG_LEVEL', 'INFO')
@@ -117,15 +121,15 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # CSRF settings
-CSRF_TRUSTED_ORIGINS = ['https://okmq.gocept.fcio.net', 'https://localhost']
+# CSRF_TRUSTED_ORIGINS = ['https://okmq.gocept.fcio.net', 'https://localhost']
 
-SESSION_COOKIE_SECURE = True
+# SESSION_COOKIE_SECURE = True
 
-CSRF_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
 
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-CORS_ORIGIN_WHITELIST = ['https://okmq.gocept.fcio.net/']
+# CORS_ORIGIN_WHITELIST = ['https://okmq.gocept.fcio.net/']
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
@@ -149,7 +153,7 @@ STATICFILES_DIR = [
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_ROOT = config.get('django', 'static')
+STATIC_ROOT = config.get('django', 'static', fallback='static/')
 STATIC_URL = 'static/'
 
 # ManifestStaticFilesStorage is recommended in production, to prevent outdatedhttp://localhost:8000/

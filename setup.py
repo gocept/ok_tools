@@ -8,4 +8,11 @@ setup(
         'Django>=4.0.5',
         'django-revproxy>=0.10.0',
     ],
+    extras_require={
+        'test': [
+            'pytest',
+            'pytest-django',
+            'zope.testbrowser',
+        ]
+    }
 )
