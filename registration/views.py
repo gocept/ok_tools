@@ -26,7 +26,7 @@ class RegisterView(generic.CreateView):
                 return HttpResponseBadRequest('Invalid Form:\n\n {}'
                                               .format("\n\n".join(error_list)))
 
-            email = form.cleaned_data['email']
+            email = form.cleaned_data['email'].lower()
             user_model = get_user_model()
 
             new_user = user_model(email=email)

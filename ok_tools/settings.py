@@ -47,7 +47,7 @@ DJANGO_LOG_LEVEL = os.getenv('DJANGO_LOG_LEVEL', 'INFO')
 # Application definition
 
 INSTALLED_APPS = [
-    'registration.apps.RegistrationConfig',
+    'registration',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
