@@ -1,6 +1,5 @@
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
-exclude: .*/migrations/.*\.py
 repos:
 -   repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.3.0
@@ -19,6 +18,7 @@ repos:
     -   id: pydocstyle
         args: ["--convention=pep257", "--add-ignore=D100,D104,D107"]
         language_version: python3
+        exclude: .*/migrations/.*\.py
 -   repo: https://github.com/PyCQA/flake8
     rev: 4.0.1
     hooks:

@@ -10,7 +10,7 @@ import logging
 class RegisterView(generic.CreateView):
     """A view which shows the form to register a user."""
 
-    form_class = RegisterForm
+    form = RegisterForm
     template_name = 'registration/register.html'
 
     def post(self, request):
