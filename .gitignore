@@ -11,5 +11,6 @@ db.sqlite3
 ok_tools-debug.log
 static/
 
-# ide
+# ides and editors
 .idea/
+.vscode/
