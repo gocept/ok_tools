@@ -53,3 +53,9 @@ class Client(AbstractUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
     objects = UserManager()
+
+    class Meta:
+        """The verbose name should be specific and translatable."""
+
+        verbose_name = _('client')
+        verbose_name_plural = _('clients')
