@@ -10,7 +10,8 @@ import logging
 class RegisterView(generic.CreateView):
     """A view which shows the form to register a user."""
 
-    form = RegisterForm
+    model = get_user_model()
+    form_class = RegisterForm
     template_name = 'registration/register.html'
 
     def post(self, request):
@@ -27,8 +28,8 @@ class RegisterView(generic.CreateView):
                                               .format("\n\n".join(error_list)))
 
             email = form.cleaned_data['email'].lower()
-            user_model = get_user_model()
 
+            user_model = self.model
             new_user = user_model(email=email)
             new_user.save()
 
