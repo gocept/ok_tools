@@ -1,8 +1,9 @@
-from .models import Client
+from django.contrib.auth import get_user_model
 from urllib.error import HTTPError
 import pytest
 
 
+Client = get_user_model()
 REGISTER_URL = 'http://localhost/register/'
 
 

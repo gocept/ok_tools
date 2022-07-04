@@ -11,7 +11,8 @@ class RegisterView(generic.CreateView):
     """A view which shows the form to register a user."""
 
     model = get_user_model()
-    form_class = RegisterForm
+    form_class = RegisterForm  # needed by github workflow
+    form = RegisterForm  # needed for local tests
     template_name = 'registration/register.html'
 
     def post(self, request):
