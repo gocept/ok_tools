@@ -3,7 +3,7 @@ from urllib.error import HTTPError
 import pytest
 
 
-Client = get_user_model()
+User = get_user_model()
 REGISTER_URL = 'http://localhost/register/'
 
 
@@ -20,7 +20,7 @@ def test_registration__1(browser):
 def test_registration__2(browser):
     """It is not possible to register with an used email address."""
     email = 'test@example.com'
-    Client(email=email).save()
+    User(email=email).save()
 
     browser.open(REGISTER_URL)
     with pytest.raises(HTTPError, match=r'.* 400.*'):

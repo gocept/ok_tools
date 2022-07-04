@@ -37,25 +37,19 @@ class UserManager(BaseUserManager):
         return self._create_user(email, password, **extra_fields)
 
 
-class Client(AbstractUser):
+class OKUser(AbstractUser):
     """
-    Model for a Client.
+    Model for a User.
 
-    A Client don't has a username and gets identified by his/her email
+    A User don't has a username and gets identified by his/her email
     address. Nevertheless the email is optional due to administrative
     reasons of the OKs.
     """
 
-    # If a Client specifiy an email addres it needs to be uniqe
+    # If a User specifies an email address it needs to be unique
     username = None
     email = models.EmailField(
         _('email address'), blank=True, unique=True, null=True)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
     objects = UserManager()
-
-    class Meta:
-        """The verbose name should be specific and translatable."""
-
-        verbose_name = _('client')
-        verbose_name_plural = _('clients')

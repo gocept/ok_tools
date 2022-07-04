@@ -168,7 +168,7 @@ STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesSto
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # authenticatable users
-AUTH_USER_MODEL = 'registration.Client'
+AUTH_USER_MODEL = 'registration.OKUser'
 AUTHENTICATION_BACKENDS = ['registration.backends.EmailBackend']
 
 LOGGING = {
