@@ -15,7 +15,7 @@ class Category(models.Model):
     Each License has a category.
     """
 
-    category = models.CharField(
+    name = models.CharField(
         _('category'),
         blank=False,
         null=True,
@@ -24,12 +24,12 @@ class Category(models.Model):
 
     def __str__(self) -> str:
         """Represent category by its String."""
-        return self.category
+        return self.name
 
 
 def default_category():
     """Provide the default Category."""
-    return Category.objects.get_or_create(category=_('Not Selected'))
+    return Category.objects.get_or_create(name=_('Not Selected'))[0]
 
 
 class LicenseTemplate(models.Model):
